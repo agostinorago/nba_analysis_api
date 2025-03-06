@@ -1,3 +1,9 @@
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logging.info(f"DATABASE_URL: {settings.database_url}")
+logging.info(f"API_KEY: {settings.api_key}")
+
 from fastapi import FastAPI
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
