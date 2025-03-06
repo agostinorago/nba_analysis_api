@@ -1,21 +1,10 @@
 services:
   - type: web
-    name: nba_analysis_api
+    name: nba-analysis-api
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
-    envVars:
-      - key: PGHOST
-        value: dpg-cup2amaj1k6c739f45p0-a
-      - key: PGPORT
-        value: 5432
-      - key: PGUSER
-        value: gioiellino_admin
-      - key: PGPASSWORD
-        value: LnRlKuDdE6FGiN3fuWi0L1uWhYC7Oqep
-      - key: PGDATABASE
-        value: gioiello_db
     plan: free
-    regions:
-      - francoforte
-    repo: https://github.com/tuo_username/tuo_repository
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port 10000"
+    envVars:
+      - key: PORT
+        value: 10000
