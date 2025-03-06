@@ -1,13 +1,11 @@
 import logging
-
-logging.basicConfig(level=logging.INFO)
-logging.info(f"DATABASE_URL: {settings.database_url}")
-logging.info(f"API_KEY: {settings.api_key}")
-
 from fastapi import FastAPI
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# Definizione della classe Settings utilizzando il nuovo import di BaseSettings
+# Configuro il logging per stampare i messaggi a console
+logging.basicConfig(level=logging.INFO)
+
+# Definizione della classe Settings per caricare le configurazioni dall'ambiente o dal file .env in locale
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
     
@@ -16,13 +14,16 @@ class Settings(BaseSettings):
     secret_key: str
     api_key: str
 
-# Inizializzazione delle configurazioni
+# Istanziazione delle configurazioni
 settings = Settings()
+
+# Stampo a log la variabile per verificare che sia stata letta correttamente
+logging.info(f"DATABASE_URL: {settings.database_url}")
 
 # Creazione dell'app FastAPI
 app = FastAPI(title="La mia App su Render")
 
-# Endpoint principale che restituisce le impostazioni caricate
+# Endpoint principale per verificare le impostazioni
 @app.get("/")
 def read_root():
     return {
@@ -32,7 +33,7 @@ def read_root():
         "API Key": settings.api_key,
     }
 
-# Blocco per avviare l'app in modalità sviluppo
+# Blocco per avviare l'app in modalità sviluppo tramite Uvicorn
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
