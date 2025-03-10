@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Classe per caricare le configurazioni
 class Settings(BaseSettings):
-    database_url=postgresql://gioiellino_admin:LnRlKuDdE6FGiN3fuWi0L1uWhYC7Oqep@dpg-cup2amaj1k6c739f45p0-a.frankfurt-postgres.render.com/gioiello_db
+    database_url:postgresql://gioiellino_admin:LnRlKuDdE6FGiN3fuWi0L1uWhYC7Oqep@dpg-cup2amaj1k6c739f45p0-a.frankfurt-postgres.render.com/gioiello_db
     api_key:"6fb9923350bef0e66e7f17d0420511e7"
 
     class Config:
