@@ -1,7 +1,7 @@
 import os
 import logging
 from fastapi import FastAPI
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 # Configura il logging
 logging.basicConfig(level=logging.INFO)
