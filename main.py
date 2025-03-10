@@ -1,4 +1,4 @@
-import logging
+logging.basicConfig(level=logging.INFO)
 from fastapi import FastAPI
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
