@@ -1,6 +1,6 @@
-pydantic-settings
 fastapi
 uvicorn
+pydantic-settings
 numpy
 pandas
 requests
