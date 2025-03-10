@@ -8,6 +8,9 @@ logging.basicConfig(level=logging.INFO)
 
 # Classe per caricare le configurazioni
 class Settings(BaseSettings):
+    database_url: str
+    api_key: str
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 # Inizializza le configurazioni
