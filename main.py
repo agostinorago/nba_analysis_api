@@ -1,17 +1,19 @@
 import os
 import logging
 from fastapi import FastAPI
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import BaseSettings
 
 # Configura il logging
 logging.basicConfig(level=logging.INFO)
 
 # Classe per caricare le configurazioni
 class Settings(BaseSettings):
-    database_url: postgresql://gioiellino_admin:LnRlKuDdE6FGiN3fuWi0L1uWhYC7Oqep@dpg-cup2amaj1k6c739f45p0-a.frankfurt-postgres.render.com/gioiello_db
-    api_key: "nessuna_chiave_necessaria"
-    
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    database_url: str
+    api_key: str
+
+    class Config:
+        env_file = ".env"  # Carica le variabili d'ambiente dal file .env
+        env_file_encoding = "utf-8"
 
 # Inizializza le configurazioni
 settings = Settings()
@@ -33,4 +35,3 @@ def read_root():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-
