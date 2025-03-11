@@ -22,4 +22,4 @@ settings = Settings()
 logging.info("Configurazione caricata con successo!")
 
 # Crea l'app FastAPI
-app = FastAPI(title="La mia A
+app = FastAPI(title="La mia API")
